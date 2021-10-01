@@ -1,13 +1,21 @@
 package br.com.alura.mvc.mudi.dto;
 
+import javax.validation.constraints.NotBlank;
 import br.com.alura.mvc.mudi.model.Pedido;
 
 //classe que serve apenas para tranferir objetos
 public class RequisicaoNovoPedido {
 
+	@NotBlank //gera um erro de validação caso esse campo seja nulo
+	//NotBlank.requisicaoNovoPedido.nomeDoProduto
 	private String nomeDoProduto;
+	
+	@NotBlank //gera um erro de validação caso esse campo seja nulo
 	private String urlDoProduto;
+	
+	@NotBlank //gera um erro de validação caso esse campo seja nulo
 	private String urlDaImagem;
+	
 	private String descricao;
 
 	public String getNomeDoProduto() {

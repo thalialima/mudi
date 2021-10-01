@@ -32,16 +32,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<!-- Spring Data é um projeto que contém várias techs para -->
 			<!-- integração com BD com java -->
-			<!-- Spring Data JPA é um subprojeto que tem integração com JPA-->
+			<!-- Spring Data JPA é um subprojeto que tem integração com JPA -->
 			<!-- Seu nível de abstração é ainda mais alto -->
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-	<!-- sim, o maria db vai funcionar com o connector do mysql ;) -->
+		<!-- sim, o maria db vai funcionar com o connector do mysql ;) -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!-- apenas necessário a partir do spring 2.3 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
 		<dependency>
