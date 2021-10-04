@@ -15,10 +15,10 @@
 		justify-content-between mb-3" style="--bs-bg-opacity: .6;">
 
 			<div class="navbar-nav text-black">
-				<a class="nav-link active" href="">Todos</a> 
-				<a class="nav-link" href="">Aguardando</a>
-				 <a class="nav-link" href="">Aprovado</a> 
-				 <a class="nav-link" href="">Entregue</a>
+				<a th:classappend="${status} == null ? 'active'" class="nav-link" href="/home">Todos</a> 
+				<a th:classappend="${status} == 'aguardando' ? 'active'" class="nav-link" href="/home/aguardando">Aguardando</a>
+				 <a th:classappend="${status} == 'aprovado' ? 'active'" class="nav-link" href="/home/aprovado">Aprovado</a> 
+				 <a th:classappend="${status} == 'entregue' ? 'active'" class="nav-link" href="/home/entregue">Entregue</a>
 			</div>
 
 			<a href="/pedido/formulario">
@@ -26,10 +26,18 @@
 			</a>
 		</nav>
 
-
+	<!-- percorre a lista de pedidos -->
 		<div class="card mb-3" th:each="pedido: ${pedidos}">
-			<div class="card-header bg-primary" style="--bs-bg-opacity: .4;" th:text="${pedido.nomeProduto}">Nome
-				do Produto</div>
+			<th:block th:switch="${pedido.status.name()}">
+				<div th:case="'AGUARDANDO'" class="card-header alert-warning" style="--bs-bg-opacity: .4;" 
+				th:text="${pedido.nomeProduto}">Nome do Produto</div>
+				
+				<div th:case="'APROVADO'" class="card-header alert-success" style="--bs-bg-opacity: .4;" 
+				th:text="${pedido.nomeProduto}">Nome do Produto</div>
+				
+				<div th:case="'ENTREGUE'" class="card-header alert alert-info" style="--bs-bg-opacity: .4;" 
+				th:text="${pedido.nomeProduto}">Nome do Produto</div>
+			</th:block>
 
 			<div class="card-body">
 
@@ -42,10 +50,11 @@
 						<!-- #row Junta as colunas na mesma linha -->
 						<div class="row">
 							<div class="col-md-5">
-								Valor: <span th:text="${pedido.valorNegociado}">89,99</span>
+								Valor: <span th:if="${pedido.valorNegociado} != null"
+								th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado,3,'POINT',2,'COMMA')}">89,99</span>
 							</div>
 							<div class="col-md-7">
-								Data da entrega: <span th:text="${pedido.dataDaEntrega}">10/10/2021</span>
+								Data da entrega: <span th:text="${#temporals.format(pedido.dataDaEntrega, 'dd/MM/yyyy')}">10/10/2021</span>
 							</div>
 						</div>
 

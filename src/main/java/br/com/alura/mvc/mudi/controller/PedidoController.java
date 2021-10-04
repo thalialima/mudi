@@ -41,6 +41,7 @@ public class PedidoController {
 		Pedido pedido = requisicao.toPedido();
 		pedidoRepository.save(pedido);
 		
-		return "pedido/formulario";
+		//retorna para a home
+		return "redirect:/home";
 	}
 }

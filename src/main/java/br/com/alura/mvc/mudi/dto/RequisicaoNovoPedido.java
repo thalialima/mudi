@@ -2,6 +2,7 @@ package br.com.alura.mvc.mudi.dto;
 
 import javax.validation.constraints.NotBlank;
 import br.com.alura.mvc.mudi.model.Pedido;
+import br.com.alura.mvc.mudi.model.StatusPedido;
 
 //classe que serve apenas para tranferir objetos
 public class RequisicaoNovoPedido {
@@ -57,7 +58,7 @@ public class RequisicaoNovoPedido {
 		pedido.setUrlDoProduto(urlDoProduto);
 		pedido.setUrlDaImagem(urlDaImagem);
 		pedido.setDescricao(descricao);
-		
+		pedido.setStatus(StatusPedido.AGUARDANDO);		
 		return pedido;
 	}
 
