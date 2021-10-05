@@ -4,65 +4,70 @@
 <body>
 
 	<div th:replace="~{base::logo}"></div>
-	
-	<div class="container" style="--bs-bg-opacity: .2;">
 
-		<div class="jumbotron mb-0 p-2 mb-3 bg-primary text-black" style="--bs-bg-opacity: .8;">
+	<div class="container" style="-bs-bg-opacity: .2;">
+
+		<div class="jumbotron mb-0 p-2 mb-3 bg-primary text-black"
+			style="-bs-bg-opacity: .8;">
 			<h1 class="display-5">Novo Pedido</h1>
 		</div>
 
-	<div class="card mt-3">
-		<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
-			
-			<div class="form-group" >
-				<label for="nomeDoProduto">Produto</label> <br> 
-				<input th:field="*{nomeDoProduto}" class="form-control" th:errorclass="is-invalid" type="text" placeholder="nome do produto"/> 
-				<small>Informe o nome do produto.</small>
-				<!-- Mensagem de erro -->
-			<div class="invalid-feedback" th:errors="*{nomeDoProduto}">
-				Erros do nome do produto
-			</div>
-				
-			</div>
-			
-			
-			<br>
+		<div class="card mt-3">
+			<form th:object="${requisicaoNovoPedido}" class="card-body"
+				action="/pedido/novo" method="POST">
 
-			<div class="form-group" >
-				<label for="urlDoProduto">URL</label> <br> 
-				<input th:field="*{urlDoProduto}"  class="form-control" th:errorclass="is-invalid" type="text" placeholder="url do produto"/>
-				<small>Procure em um site a url do produto que você deseja e cole aqui.</small>
-				<!-- Mensagem de erro -->
-			<div  class="invalid-feedback" th:errors="*{urlDoProduto}">
-				Erros da url
-			</div>
-			</div>
-			
-			<br>
+				<div class="form-group">
+					<label for="nomeDoProduto">Produto</label> <br> <input
+						th:field="*{nomeDoProduto}" class="form-control"
+						th:errorclass="is-invalid" type="text"
+						placeholder="nome do produto" /> <small>Informe o nome do
+						produto.</small>
+					<!-- Mensagem de erro -->
+					<div class="invalid-feedback" th:errors="*{nomeDoProduto}">
+						Erros do nome do produto</div>
 
-			<div class="form-group" >
-				<label for="urlDaImagem">Imagem</label> <br> 
-				<input th:field="*{urlDaImagem}"  class="form-control" th:errorclass="is-invalid" type="text" placeholder="url da imagem"/> 
-				<small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir
-				compradores.</small>
-				<!-- Mensagem de erro -->
-			<div  class="invalid-feedback" th:errors="*{urlDaImagem}">
-				Erros da url da imagem
-			</div>
-			</div>
-			
-			<br>
-			
-			<div class="form-group" >
-				<label for="descricao">Descrição</label> <br> 
-				<textarea th:field="*{descricao}" class="form-control" 
-				placeholder="faça uma descrição do produto que deseja para ajudar o comprador"></textarea>
-			</div><br>
-			
-			<button class="btn btn-primary my-2 my-sm-0" type="submit">
-			Cadastrar
-			</button><br>
-		</form>
+				</div>
+
+
+				<br>
+
+				<div class="form-group">
+					<label for="urlDoProduto">URL</label> <br> <input
+						th:field="*{urlDoProduto}" class="form-control"
+						th:errorclass="is-invalid" type="text"
+						placeholder="url do produto" /> <small>Procure em um site
+						a url do produto que você deseja e cole aqui.</small>
+					<!-- Mensagem de erro -->
+					<div class="invalid-feedback" th:errors="*{urlDoProduto}">
+						Erros da url</div>
+				</div>
+
+				<br>
+
+				<div class="form-group">
+					<label for="urlDaImagem">Imagem</label> <br> <input
+						th:field="*{urlDaImagem}" class="form-control"
+						th:errorclass="is-invalid" type="text" placeholder="url da imagem" />
+					<small>Copie a url de uma boa imagem do produto e cole aqui
+						para ajudar a conseguir compradores.</small>
+					<!-- Mensagem de erro -->
+					<div class="invalid-feedback" th:errors="*{urlDaImagem}">
+						Erros da url da imagem</div>
+				</div>
+
+				<br>
+
+				<div class="form-group">
+					<label for="descricao">Descrição</label> <br>
+					<textarea th:field="*{descricao}" class="form-control"
+						placeholder="faça uma descrição do produto que deseja para ajudar o comprador"></textarea>
+				</div>
+				<br>
+
+				<button class="btn btn-primary my-2 my-sm-0" type="submit">
+					Cadastrar</button>
+				<br>
+			</form>
 		</div>
 	</div>
 </body>
