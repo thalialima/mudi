@@ -23,36 +23,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-			.anyRequest().authenticated()
+		.antMatchers("/home/**")
+			.permitAll()
+		.anyRequest()
+			.authenticated()
 		.and()
 		.formLogin(form -> form
 			//pede a url da página
 			.loginPage("/login")
 			//envia o usuário para a home depois do login
-			.defaultSuccessUrl("/home", true)
+			.defaultSuccessUrl("/usuario/pedido", true)
 			.permitAll()
 		)
-		.logout(logout -> logout.logoutUrl("/logout"));
-	
+		.logout(logout -> {
+			
+		logout.logoutUrl("/logout")
+			.logoutSuccessUrl("/home");
+	});
+
 	}
-	
-	
-	//indica que será usado o JDBC autentication
+
+	// indica que será usado o JDBC autentication
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	
-		
-		auth.jdbcAuthentication()
-			.dataSource(dataSource)
-			.passwordEncoder(encoder);
-		
+
+		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder);
+
 	}
-	
+
 }
