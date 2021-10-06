@@ -34,6 +34,7 @@ public class HomeController {
 		//acesso ao BD com Spring Data
 		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.ENTREGUE, paginacao);
 		
+		//tudo que é adicionado no model é acessível pelo thymeleaf
 		model.addAttribute("pedidos", pedidos);
 		
 		return "home";
